@@ -1,0 +1,56 @@
+function computerPlay() {
+    let outcome = ["Rock", "Paper", "Scissors"];
+    let result = outcome[Math.floor(Math.random() * outcome.length)];
+    return result;
+}  
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+    if (playerSelection === computerSelection) {
+        return "Tie! Try again"
+    }
+    if (playerSelection === "Paper" && computerSelection === "Rock") {
+        return "You Win! Paper beats Rock"
+    }
+    if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        return "You Lose! Scissors beats Paper"
+    }
+    if (playerSelection === "Rock" && computerSelection === "Paper") {
+        return "You Lose! Paper beats Rock"
+    }
+    if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        return "You Win! Rock beats Scissors"
+    }
+    if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        return "You Win! Scissors beats Paper"
+    }
+    if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        return "You Lose! Rock beats Scissors"
+    }
+}
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        console.log("Round " + (i + 1));
+        let playerSelection = window.prompt("Select your tool: ");
+        const computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result);
+        if (result.slice(0,7) === "You Win") {
+            playerScore++;
+        } else if (result.slice(0,8) === "You Lose") {
+            computerScore++;
+        }
+        console.log("Player: " + playerScore + " Computer: " + computerScore);
+    }
+    if (playerScore > computerScore) {
+        return "You Won the Game!"
+    } else if (playerScore < computerScore) {
+        return "You Lost the Game"
+    } else {
+        return "Tie Game"
+    }
+}
