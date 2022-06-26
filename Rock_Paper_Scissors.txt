@@ -1,7 +1,6 @@
 function computerPlay() {
     let outcome = ["Rock", "Paper", "Scissors"];
-    let result = outcome[Math.floor(Math.random() * outcome.length)];
-    return result;
+    return outcome[Math.floor(Math.random() * outcome.length)];
 }  
 
 function playRound(playerSelection, computerSelection) {
